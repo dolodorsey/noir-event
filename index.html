@@ -1,130 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NOIR — After Dark</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NOIR — A HUGLIFE Experience</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0B0A0C;--accent:#D2B98B;--light:#F2E7D8;--support:#4D3947;--ease:cubic-bezier(0.16,1,0.3,1)}
+:root{--base:#07070a;--surface:#0c0a0e;--gold:#d8b26e;--goldLight:#f2d39b;--goldDeep:#8b6b3d;--cream:#f0ece4;--muted:rgba(255,255,255,0.48);--dim:rgba(255,255,255,0.22);--border:rgba(255,255,255,0.07)}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--light);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
-
-/* ═══ V3 GRAIN 4% ═══ */
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.04;mix-blend-mode:overlay;
-  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-
-/* ═══ V3 LOGO PRELOADER (CSS animation fallback — no video available) ═══ */
-.preloader{position:fixed;inset:0;background:var(--bg);z-index:10000;display:flex;align-items:center;justify-content:center;
-  transition:opacity 1.2s var(--ease),visibility 1.2s}
-.preloader.done{opacity:0;visibility:hidden;pointer-events:none}
-.preloader img{width:clamp(100px,18vw,180px);filter:blur(0px);animation:preloaderReveal 2s var(--ease) forwards}
-@keyframes preloaderReveal{
-  0%{opacity:0;transform:scale(0.8);filter:blur(12px)}
-  60%{opacity:1;transform:scale(1.02);filter:blur(0px)}
-  100%{opacity:1;transform:scale(1);filter:blur(0px)}
-}
-
-/* ═══ V3 HERO — IMAGE AS ARCHITECTURE ═══ */
-.hero{position:relative;height:100vh;overflow:hidden}
-.hero-bg{position:absolute;inset:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,10,12,0.3) 0%,rgba(11,10,12,0.85) 70%,var(--bg) 100%)}
-.hero-content{position:absolute;bottom:clamp(60px,10vh,120px);left:clamp(24px,6vw,80px);right:clamp(24px,6vw,80px);z-index:2}
-.hero-logo{width:clamp(60px,8vw,120px);margin-bottom:24px;opacity:0;animation:v3reveal 1.1s var(--ease) 1.8s forwards}
-.hero h1{font-size:clamp(48px,14vw,200px);font-weight:300;line-height:0.85;letter-spacing:-0.04em;
-  opacity:0;animation:v3reveal 1.1s var(--ease) 2s forwards}
-.hero h1 em{font-weight:600;font-style:italic;color:var(--accent)}
-.hero .sub{font-size:clamp(11px,1.2vw,15px);letter-spacing:0.4em;text-transform:uppercase;color:var(--support);
-  margin-top:clamp(16px,2vw,32px);font-weight:400;opacity:0;animation:v3reveal 1.1s var(--ease) 2.2s forwards}
-
-/* ═══ V3 SECTIONS ═══ */
-.txt-section{padding:clamp(80px,12vw,160px) clamp(24px,6vw,80px);max-width:1000px}
-.txt-section .label{font-size:11px;font-weight:600;letter-spacing:0.5em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
-.txt-section h2{font-size:clamp(32px,5vw,64px);font-weight:300;line-height:1.1;letter-spacing:-0.02em}
-.txt-section p{font-size:clamp(15px,1.4vw,19px);color:var(--support);margin-top:20px;line-height:1.8;font-weight:300;max-width:560px}
-
-/* ═══ V3 IMAGES-AS-ARCHITECTURE ═══ */
-.img-fullscreen{width:100%;overflow:hidden}
-.img-fullscreen img{width:100%;height:auto;display:block}
-
-.img-overlap{padding:clamp(40px,6vw,80px) clamp(24px,4vw,60px)}
-.img-overlap-inner{width:75%;margin-left:auto;position:relative}
-.img-overlap-inner::before{content:'';position:absolute;top:-20px;left:-40px;right:40px;bottom:20px;border:1px solid var(--accent);opacity:0.2;z-index:-1}
-.img-overlap-inner img{width:100%;height:auto;display:block}
-
-.img-edge{width:100%;overflow:hidden}
-.img-edge img{width:100%;height:auto;display:block}
-
-/* ═══ V3 CITIES ═══ */
-.cities-section{padding:clamp(60px,8vw,120px) clamp(24px,6vw,80px);border-top:1px solid rgba(210,185,139,0.12)}
-.cities-section .label{font-size:11px;font-weight:600;letter-spacing:0.5em;text-transform:uppercase;color:var(--accent);margin-bottom:32px}
-.cities-text{font-size:clamp(24px,4vw,48px);font-weight:300;letter-spacing:0.08em;color:var(--support);line-height:1.6}
-
-/* ═══ V3 CTA ═══ */
-.cta-section{text-align:center;padding:clamp(100px,15vw,200px) 24px}
-.cta-section h2{font-size:clamp(36px,8vw,100px);font-weight:300;line-height:0.9;letter-spacing:-0.03em;margin-bottom:40px}
-.cta-section h2 em{font-weight:600;font-style:italic;color:var(--accent)}
-.cta-btn{display:inline-block;padding:20px 56px;border:1px solid var(--accent);color:var(--accent);
-  font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:0.3em;text-transform:uppercase;
-  text-decoration:none;transition:all 0.5s var(--ease)}
-.cta-btn:hover{background:var(--accent);color:var(--bg);letter-spacing:0.5em}
-
-/* ═══ FOOTER ═══ */
-footer{padding:48px 24px;text-align:center;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--support);opacity:0.3}
-
-/* ═══ V3 REVEAL: 60px / 1.1s ═══ */
-@keyframes v3reveal{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:translateY(0)}}
-.reveal{opacity:0;transform:translateY(60px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+body{background:var(--base);color:var(--cream);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:26px clamp(24px,4vw,64px);display:flex;justify-content:space-between;align-items:center;transition:all .5s cubic-bezier(.16,1,.3,1)}
+nav.scrolled{background:rgba(7,7,10,.96);backdrop-filter:blur(28px);border-bottom:1px solid var(--border);padding:14px clamp(24px,4vw,64px)}
+.nav-logo-eyebrow{font-size:7px;letter-spacing:.55em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.nav-logo-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--cream);letter-spacing:.12em}
+.nav-links{display:flex;gap:clamp(14px,2.5vw,36px);align-items:center}
+.nav-link{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s}
+.nav-link:hover{color:var(--cream)}
+.nav-cta{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#07070a;background:linear-gradient(135deg,var(--gold),var(--goldDeep));border:none;padding:10px 28px;cursor:pointer;transition:transform .3s}
+.nav-cta:hover{transform:translateY(-2px)}
+.grain{position:absolute;inset:0;opacity:.04;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero{min-height:100vh;position:relative;overflow:hidden;background:radial-gradient(ellipse at 70% 20%,rgba(216,178,110,.14) 0%,transparent 50%),radial-gradient(ellipse at 20% 80%,rgba(80,30,10,.15) 0%,transparent 55%),var(--base);display:flex;flex-direction:column;justify-content:flex-end;padding:0 clamp(32px,6vw,96px) 96px}
+.hero-grid{position:absolute;inset:0;opacity:.03;background-image:linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);background-size:100px 100px}
+.hero-orb{position:absolute;top:10%;right:8%;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(216,178,110,.15),transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%}
+.eyebrow{font-size:9px;letter-spacing:.55em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(56px,11vw,160px);font-weight:600;line-height:.86;letter-spacing:-.02em;color:var(--cream);opacity:0;transform:translateY(44px);transition:all 1.1s cubic-bezier(.16,1,.3,1) .5s}
+.hero-h1.loaded{opacity:1;transform:translateY(0)}
+.hero-h1 .ghost{color:rgba(240,236,228,.22)}
+.hero-h1 .grad{background:linear-gradient(135deg,var(--goldLight),var(--gold),var(--goldDeep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-p{font-size:clamp(14px,1.2vw,17px);line-height:1.85;color:var(--muted);max-width:520px;margin-top:32px;opacity:0;transition:opacity .9s ease .9s}
+.hero-p.loaded{opacity:1}
+.hero-btns{display:flex;gap:16px;margin-top:48px;flex-wrap:wrap;opacity:0;transition:opacity .9s ease 1.2s}
+.hero-btns.loaded{opacity:1}
+.btn-primary{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#07070a;background:linear-gradient(135deg,var(--gold),var(--goldDeep));border:none;padding:14px 44px;cursor:pointer;transition:transform .3s}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-secondary{font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);background:transparent;border:1px solid var(--border);padding:14px 36px;cursor:pointer;transition:all .3s}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.hero-cities{display:flex;gap:32px;margin-top:72px;flex-wrap:wrap;opacity:0;transition:opacity 1s ease 1.4s}
+.hero-cities.loaded{opacity:1}
+.city-tag{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--cream)}
+.city-sub{font-size:8px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+section{padding:120px clamp(32px,6vw,96px)}
+.section-inner{max-width:1400px;margin:0 auto}
+.section-label{font-size:9px;letter-spacing:.48em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.section-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,72px);font-weight:600;line-height:.95;color:var(--cream)}
+.grid-2{display:grid;gap:2px;background:var(--border)}
+.reveal{opacity:0;transform:translateY(32px);transition:all .9s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
-
-/* ═══ MOBILE ═══ */
-@media(max-width:768px){
-  .img-overlap-inner{width:92%;margin:0 auto}
-  .img-overlap-inner::before{display:none}
-  .hero h1{font-size:clamp(42px,12vw,80px)}
-}
+.surface{background:var(--surface)}
+.gold-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(216,178,110,.6),transparent)}
+.vip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:64px}
+.vip-card{background:#0c0a0e;padding:52px 40px;position:relative;overflow:hidden}
+.vip-card.featured{background:linear-gradient(145deg,#0e0c10,#16121c);border:1px solid rgba(216,178,110,.3)}
+.vip-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.vip-name{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:600;color:var(--cream);margin-bottom:4px}
+.vip-sub{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.vip-price{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--gold);margin-bottom:8px}
+.vip-note{font-size:11px;color:var(--dim);margin-bottom:28px}
+.vip-features{list-style:none;margin:24px 0 36px;display:flex;flex-direction:column;gap:10px}
+.vip-features li{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.vip-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.vip-btn{width:100%;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:14px;cursor:pointer;transition:all .3s}
+.vip-btn.primary{color:#07070a;background:linear-gradient(135deg,var(--gold),var(--goldDeep));border:none}
+.vip-btn.secondary{color:var(--cream);background:transparent;border:1px solid var(--border)}
+.vip-btn.secondary:hover{border-color:var(--gold)}
+.city-panel-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:2px;background:var(--border)}
+.city-list{background:var(--base);display:flex;flex-direction:column;gap:1px}
+.city-item{padding:28px 32px;cursor:pointer;border-left:2px solid transparent;transition:all .3s}
+.city-item.active{background:linear-gradient(135deg,rgba(216,178,110,.1),rgba(139,107,61,.06));border-left-color:var(--gold)}
+.city-item-name{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--muted);transition:color .3s}
+.city-item.active .city-item-name{color:var(--cream)}
+.city-detail{background:linear-gradient(145deg,#0c0a10,#14101e);padding:56px 52px;position:relative;overflow:hidden}
+.city-detail-glow{position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(216,178,110,.15),transparent 60%)}
+.city-detail-inner{position:relative;z-index:2}
+.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:64px}
+.quote-card{background:var(--base);padding:48px 36px}
+.quote-mark{font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--gold);opacity:.4;line-height:1;margin-bottom:20px}
+.quote-text{font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.7;color:var(--cream);font-style:italic;margin-bottom:28px}
+.closing{min-height:70vh;position:relative;overflow:hidden;background:var(--base);display:flex;align-items:center;justify-content:center;padding:120px clamp(32px,6vw,96px)}
+.closing-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(216,178,110,.12),transparent 60%)}
+.closing-inner{text-align:center;position:relative;z-index:2;max-width:860px}
+.closing-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,6vw,88px);font-weight:600;line-height:.92;color:var(--cream);margin-bottom:28px}
+footer{background:#04040a;border-top:1px solid var(--border);padding:64px clamp(32px,6vw,96px) 40px}
+.footer-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:48px;margin-bottom:64px}
+.footer-col-h{font-size:8px;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.footer-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-list li{font-size:13px;color:var(--muted)}
+.footer-bottom{max-width:1400px;margin:0 auto;border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.2)}
 </style>
 </head>
 <body>
 
-<div class="preloader" id="preloader"><img src="https://dzlmtvodpyhetvektfuo.supabase.co/storage/v1/object/public/brand-graphics//uploads/NOIR_logo.png" alt="NOIR" /></div>
+<nav id="nav">
+  <div>
+    <div class="nav-logo-eyebrow">A HUGLIFE Experience</div>
+    <div class="nav-logo-name">NOIR</div>
+  </div>
+  <div class="nav-links">
+    <a href="#experience" class="nav-link">Experience</a>
+    <a href="#vip" class="nav-link">VIP</a>
+    <a href="#cities" class="nav-link">Cities</a>
+    <a href="#partners" class="nav-link">Partners</a>
+    <button class="nav-cta">Request Access</button>
+  </div>
+</nav>
 
 <section class="hero">
-  <div class="hero-bg"><img src="https://dzlmtvodpyhetvektfuo.supabase.co/storage/v1/object/public/brand-graphics/noir_event/03_event_flyers/NOIR_NEWS.png" alt="" /></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <img class="hero-logo" src="https://dzlmtvodpyhetvektfuo.supabase.co/storage/v1/object/public/brand-graphics//uploads/NOIR_logo.png" alt="NOIR" />
-    <h1>NOIR<br><em>After Dark</em></h1>
-    <div class="sub">After Dark</div>
+  <div class="grain"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-inner">
+    <div class="eyebrow" id="eyebrow" style="opacity:0;transition:opacity .9s ease .3s">Invite-Level Nightlife · Curated Access · City Prestige</div>
+    <h1 class="hero-h1" id="heroH1">
+      The Room<br>
+      <em class="ghost">Has Always</em><br>
+      <em class="grad">Known.</em>
+    </h1>
+    <p class="hero-p" id="heroP">NOIR is not a venue. It is a standard. Entry is curated. The crowd is intentional. Every city drop is designed to feel like a cultural event — because it is.</p>
+    <div class="hero-btns" id="heroBtns">
+      <button class="btn-primary">Request Access</button>
+      <button class="btn-secondary">Reserve a Section</button>
+    </div>
+    <div class="hero-cities" id="heroCities">
+      <div><div class="city-tag">ATL</div><div class="city-sub">Flagship</div></div>
+      <div><div class="city-tag">HTX</div><div class="city-sub">Active</div></div>
+      <div><div class="city-tag">CLT</div><div class="city-sub">Active</div></div>
+      <div><div class="city-tag">MIA</div><div class="city-sub">Upcoming</div></div>
+      <div><div class="city-tag">LV</div><div class="city-sub">May 25</div></div>
+      <div><div class="city-tag">NY</div><div class="city-sub">June 22</div></div>
+    </div>
   </div>
 </section>
 
-<section class="txt-section reveal">
-  <div class="label">The Experience</div>
-  <h2>The most exclusive after-dark experience.</h2>
-  <p>The most exclusive after-dark experience. Velvet ropes, dim lights, and curated luxury nightlife.</p>
+<section id="experience" style="background:var(--base)">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">The NOIR Standard</div>
+      <h2 class="section-h2" style="margin-bottom:64px">Why NOIR <em>Matters</em></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)">
+      <div style="background:var(--base);padding:44px 36px"><div class="serif" style="font-size:24px;color:var(--gold);margin-bottom:20px;opacity:.7">◈</div><div class="serif" style="font-size:24px;font-weight:600;color:var(--cream);margin-bottom:14px">Curated Entry</div><p style="font-size:14px;line-height:1.75;color:var(--muted)">NOIR is built around controlled access, elevated crowd quality, and a feeling that entry itself carries worth.</p></div>
+      <div style="background:var(--base);padding:44px 36px"><div class="serif" style="font-size:24px;color:var(--gold);margin-bottom:20px;opacity:.7">◇</div><div class="serif" style="font-size:24px;font-weight:600;color:var(--cream);margin-bottom:14px">VIP Experience</div><p style="font-size:14px;line-height:1.75;color:var(--muted)">Bottle service, reserved sections, concierge routing, and premium arrival treatment are central to every NOIR property.</p></div>
+      <div style="background:var(--base);padding:44px 36px"><div class="serif" style="font-size:24px;color:var(--gold);margin-bottom:20px;opacity:.7">◉</div><div class="serif" style="font-size:24px;font-weight:600;color:var(--cream);margin-bottom:14px">City Prestige</div><p style="font-size:14px;line-height:1.75;color:var(--muted)">Each market drop feels like a selective cultural moment, not a recycled nightlife listing.</p></div>
+      <div style="background:var(--base);padding:44px 36px"><div class="serif" style="font-size:24px;color:var(--gold);margin-bottom:20px;opacity:.7">◈</div><div class="serif" style="font-size:24px;font-weight:600;color:var(--cream);margin-bottom:14px">Brand Partnerships</div><p style="font-size:14px;line-height:1.75;color:var(--muted)">NOIR supports premium sponsors, luxury activations, and nightlife-aligned placement.</p></div>
+      <div style="background:var(--base);padding:44px 36px"><div class="serif" style="font-size:24px;color:var(--gold);margin-bottom:20px;opacity:.7">◇</div><div class="serif" style="font-size:24px;font-weight:600;color:var(--cream);margin-bottom:14px">Fashion & Aesthetics</div><p style="font-size:14px;line-height:1.75;color:var(--muted)">Dress codes enforced. Candlelight and flash moments documented. The visual standard of NOIR is non-negotiable.</p></div>
+      <div style="background:var(--base);padding:44px 36px"><div class="serif" style="font-size:24px;color:var(--gold);margin-bottom:20px;opacity:.7">◉</div><div class="serif" style="font-size:24px;font-weight:600;color:var(--cream);margin-bottom:14px">Social Proof Loop</div><p style="font-size:14px;line-height:1.75;color:var(--muted)">Every NOIR night generates premium visual content and editorial moments that compound the brand.</p></div>
+    </div>
+  </div>
 </section>
 
-
-
-<section class="cities-section reveal">
-  <div class="label">Tour Stops</div>
-  <div class="cities-text">Atlanta · Houston · DC · Miami · LA · Las Vegas</div>
+<section id="vip" style="background:var(--surface);position:relative;overflow:hidden">
+  <div class="grain"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(216,178,110,.15),transparent 60%)"></div>
+  <div class="section-inner" style="position:relative;z-index:2">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label" style="display:inline-block">VIP Access Tiers</div>
+      <h2 class="section-h2" style="margin-top:16px;margin-bottom:20px">Reserve Your Night</h2>
+      <p style="font-size:15px;line-height:1.8;color:var(--muted);max-width:480px;margin:0 auto">Three tiers of NOIR access. Each one a complete experience.</p>
+    </div>
+    <div class="vip-grid">
+      <div class="vip-card"><div class="vip-name">Sessions</div><div class="vip-sub">Entry-Level Prestige</div><div class="vip-price">$1,500</div><div class="vip-note">Per reservation · subject to availability</div><div class="gold-line"></div><ul class="vip-features"><li><div class="vip-dot"></div>Guaranteed entry (no queue)</li><li><div class="vip-dot"></div>Bottle service setup</li><li><div class="vip-dot"></div>Section reservation</li><li><div class="vip-dot"></div>2–4 guest standard</li></ul><button class="vip-btn secondary">Book Sessions</button></div>
+      <div class="vip-card featured"><div style="font-size:8px;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Most Popular</div><div class="vip-name">Prestige</div><div class="vip-sub">Signature NOIR Experience</div><div class="vip-price">$2,500</div><div class="vip-note">Per reservation · subject to availability</div><div class="gold-line"></div><ul class="vip-features"><li><div class="vip-dot"></div>Prestige arrival routing</li><li><div class="vip-dot"></div>Premium section placement</li><li><div class="vip-dot"></div>Full bottle service</li><li><div class="vip-dot"></div>4–8 guest capacity</li><li><div class="vip-dot"></div>Event documentation access</li></ul><button class="vip-btn primary">Book Prestige</button></div>
+      <div class="vip-card"><div class="vip-name">Grand</div><div class="vip-sub">Maximum NOIR Access</div><div class="vip-price">$5,000</div><div class="vip-note">Per reservation · subject to availability</div><div class="gold-line"></div><ul class="vip-features"><li><div class="vip-dot"></div>Grand arrival experience</li><li><div class="vip-dot"></div>Premier section placement</li><li><div class="vip-dot"></div>Unlimited bottle service</li><li><div class="vip-dot"></div>8–16 guest capacity</li><li><div class="vip-dot"></div>Dedicated NOIR concierge</li></ul><button class="vip-btn secondary">Book Grand</button></div>
+    </div>
+  </div>
 </section>
 
-<section class="cta-section reveal">
-  <h2>Don't Miss<br><em>The Next One.</em></h2>
-  <a href="#" class="cta-btn">Get on the List</a>
+<section id="cities" style="background:var(--base)">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">2026 City Drops</div>
+      <h2 class="section-h2" style="margin-bottom:64px">Where NOIR <em>Lands Next</em></h2>
+    </div>
+    <div class="city-panel-grid">
+      <div class="city-list">
+        <div class="city-item active" onclick="setCity(0,this)"><div class="city-item-name">Las Vegas</div><div style="font-size:11px;color:var(--gold);margin-top:4px">May 25, 2026</div></div>
+        <div class="city-item" onclick="setCity(1,this)"><div class="city-item-name">Miami</div><div style="font-size:11px;color:rgba(255,255,255,.28);margin-top:4px">June 8, 2026</div></div>
+        <div class="city-item" onclick="setCity(2,this)"><div class="city-item-name">New York</div><div style="font-size:11px;color:rgba(255,255,255,.28);margin-top:4px">June 22, 2026</div></div>
+        <div class="city-item" onclick="setCity(3,this)"><div class="city-item-name">Atlanta</div><div style="font-size:11px;color:rgba(255,255,255,.28);margin-top:4px">April 26, 2026</div></div>
+      </div>
+      <div class="city-detail"><div class="city-detail-glow"></div><div class="grain"></div>
+        <div class="city-detail-inner" id="cityDetail">
+          <div style="font-size:8px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Tickets Open</div>
+          <div class="serif" style="font-size:64px;font-weight:600;color:var(--cream);line-height:1;margin-bottom:12px">Las Vegas</div>
+          <div style="font-size:14px;color:var(--gold);margin-bottom:4px">May 25, 2026</div>
+          <div style="font-size:12px;color:var(--dim);margin-bottom:32px">Private Venue · Strip Adjacent</div>
+          <div class="gold-line"></div>
+          <p style="font-size:14px;line-height:1.85;color:var(--muted);margin:28px 0 36px">West Coast premiere. High-profile guest list. NOIR at full capacity.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <button class="btn-primary">Request Access</button>
+            <button class="btn-secondary">Reserve VIP</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<footer>&copy; 2026 NOIR &mdash; A Kollective Hospitality Group Experience</footer>
+<section style="background:var(--surface);position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(216,178,110,.1),transparent 65%)"></div>
+  <div class="grain"></div>
+  <div class="section-inner" style="position:relative;z-index:2">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label" style="display:inline-block">Social Proof</div>
+      <h2 class="section-h2" style="margin:16px 0 64px">The Room Speaks.</h2>
+    </div>
+    <div class="quote-grid">
+      <div class="quote-card"><div class="quote-mark">"</div><p class="quote-text">NOIR doesn't feel like a nightclub. It feels like something you had to earn.</p><div class="gold-line"></div><div style="margin-top:20px;font-size:11px;font-weight:600;color:var(--cream)">Atlanta Attendee</div><div style="font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-top:4px">NOIR ATL</div></div>
+      <div class="quote-card"><div class="quote-mark">"</div><p class="quote-text">The crowd quality, the lighting, the service — NOIR has figured out what luxury nightlife actually means.</p><div class="gold-line"></div><div style="margin-top:20px;font-size:11px;font-weight:600;color:var(--cream)">Houston Guest</div><div style="font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-top:4px">NOIR HTX</div></div>
+      <div class="quote-card"><div class="quote-mark">"</div><p class="quote-text">I've been to every notable nightlife event in the city. NOIR is the only one I request an invite to.</p><div class="gold-line"></div><div style="margin-top:20px;font-size:11px;font-weight:600;color:var(--cream)">Charlotte Attendee</div><div style="font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-top:4px">NOIR CLT</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="closing">
+  <div class="closing-glow"></div>
+  <div class="grain"></div>
+  <div class="closing-inner reveal">
+    <div class="section-label" style="display:inline-block;margin-bottom:28px">The Standard Has Been Set</div>
+    <h2 class="closing-h2">Not Every Night<br><em class="grad">Deserves You.</em></h2>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted);max-width:520px;margin:0 auto 52px">NOIR does. Request access to the next city drop and experience nightlife the way it was always meant to feel.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <button class="btn-primary">Request NOIR Access</button>
+      <button class="btn-secondary">Reserve Your Section</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div style="font-size:7px;letter-spacing:.55em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">A HUGLIFE Experience</div>
+      <div class="serif" style="font-size:28px;font-weight:600;color:var(--cream);letter-spacing:.1em;margin-bottom:16px">NOIR</div>
+      <p style="font-size:13px;line-height:1.75;color:var(--muted)">Curated access. City prestige. Invite-level nightlife.</p>
+      <div style="margin-top:20px;font-size:12px;color:var(--dim)">justhuglife.forever@gmail.com</div>
+    </div>
+    <div><div class="footer-col-h">Access</div><ul class="footer-list"><li>Request Entry</li><li>Reserve a Section</li><li>Sessions — $1,500</li><li>Prestige — $2,500</li><li>Grand — $5,000</li></ul></div>
+    <div><div class="footer-col-h">Cities</div><ul class="footer-list"><li>Atlanta (Flagship)</li><li>Houston</li><li>Charlotte</li><li>Miami (June 8)</li><li>Las Vegas (May 25)</li><li>New York (June 22)</li></ul></div>
+    <div><div class="footer-col-h">Partners</div><ul class="footer-list"><li>Sponsor NOIR</li><li>Brand Activations</li><li>Venue Partners</li><li>Media & Press</li><li>Talent Booking</li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 NOIR. A HUGLIFE × KHG Experience. All rights reserved.</div>
+    <div style="display:flex;gap:24px"><span style="font-size:11px;color:rgba(255,255,255,.22);cursor:pointer">Privacy</span><span style="font-size:11px;color:rgba(255,255,255,.22);cursor:pointer">Terms</span><span style="font-size:11px;color:rgba(255,255,255,.22);cursor:pointer">Contact</span></div>
+  </div>
+</footer>
 
 <script>
-window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader').classList.add('done'),2200)});
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.08});
+const cities=[
+  {status:"Tickets Open",name:"Las Vegas",date:"May 25, 2026",venue:"Private Venue · Strip Adjacent",note:"West Coast premiere. High-profile guest list. NOIR at full capacity."},
+  {status:"Waitlist",name:"Miami",date:"June 8, 2026",venue:"Curated South Beach Venue",note:"The Miami debut. Fashion-forward crowd. Full NOIR rollout."},
+  {status:"Request Access",name:"New York",date:"June 22, 2026",venue:"Private Manhattan Location",note:"NOIR's global stage. Invite-level curated access only."},
+  {status:"On Request",name:"Atlanta",date:"April 26, 2026",venue:"Invitation Only · Private",note:"The home market. NOIR's flagship experience at its most refined."}
+];
+
+function setCity(i,el){
+  document.querySelectorAll('.city-item').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  const c=cities[i];
+  document.getElementById('cityDetail').innerHTML=`
+    <div style="font-size:8px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">${c.status}</div>
+    <div class="serif" style="font-size:64px;font-weight:600;color:var(--cream);line-height:1;margin-bottom:12px">${c.name}</div>
+    <div style="font-size:14px;color:var(--gold);margin-bottom:4px">${c.date}</div>
+    <div style="font-size:12px;color:var(--dim);margin-bottom:32px">${c.venue}</div>
+    <div class="gold-line"></div>
+    <p style="font-size:14px;line-height:1.85;color:var(--muted);margin:28px 0 36px">${c.note}</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <button class="btn-primary">Request Access</button>
+      <button class="btn-secondary">Reserve VIP</button>
+    </div>
+  `;
+}
+
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('nav');
+  nav.classList.toggle('scrolled',window.scrollY>60);
+});
+
+setTimeout(()=>{
+  document.getElementById('eyebrow').style.opacity='1';
+  document.getElementById('heroH1').classList.add('loaded');
+  document.getElementById('heroP').classList.add('loaded');
+  document.getElementById('heroBtns').classList.add('loaded');
+  document.getElementById('heroCities').classList.add('loaded');
+},100);
+
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');})},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
