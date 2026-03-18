@@ -34,9 +34,10 @@ function Nav(){const[sc,setSc]=useState(false);useEffect(()=>{const h=()=>setSc(
 function Hero(){const[ld,setLd]=useState(false);useEffect(()=>{setTimeout(()=>setLd(true),100)},[]);
 return(<section style={{position:"relative",width:"100%",height:"100vh",overflow:"hidden",background:C.base,display:"flex",alignItems:"flex-end"}}>
 <div style={{position:"absolute",inset:0}}>
+  {/* BG photo — luxury nightlife atmosphere */}
+  <img src="/images/noir-atmosphere.jpg" alt="" style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",opacity:0.18,filter:"brightness(0.5) saturate(0.6)"}}/>
   <div style={{position:"absolute",inset:0,background:`radial-gradient(ellipse at 30% 60%, ${C.plumGlow} 0%, transparent 55%)`}}/>
   <div style={{position:"absolute",inset:0,background:`radial-gradient(ellipse at 70% 30%, ${C.sandDim} 0%, transparent 50%)`}}/>
-  <div style={{position:"absolute",inset:0,backgroundImage:"linear-gradient(rgba(242,231,216,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(242,231,216,0.03) 1px,transparent 1px)",backgroundSize:"80px 80px"}}/>
   <Grain/>
 </div>
 <div style={{position:"absolute",inset:0,background:"linear-gradient(to top, rgba(11,10,12,0.98) 0%, rgba(11,10,12,0.5) 50%, transparent 100%)"}}/>
@@ -56,8 +57,10 @@ return(<section style={{position:"relative",width:"100%",height:"100vh",overflow
 
 function Experience(){
 const pillars=[{t:"The Atmosphere",d:"Dark, deliberate, and cinematic. Every detail from lighting to music is engineered for a specific feeling.",n:"01"},{t:"The Sound",d:"A DJ experience built for movement. Deep house, Afrobeats, R&B, and hip-hop curated by Atlanta's finest.",n:"02"},{t:"The Crowd",d:"Stylish, social, intentional. NOIR attracts people who value ambiance as much as the night itself.",n:"03"},{t:"The Aesthetic",d:"Fashion-forward dress code. Dark elegance is the standard. Come dressed for the moment.",n:"04"}];
-return(<section id="experience" style={{background:C.base,padding:"120px clamp(32px,5vw,80px)"}}>
-<div style={{maxWidth:"1400px",margin:"0 auto"}}>
+return(<section id="experience" style={{background:C.base,padding:"120px clamp(32px,5vw,80px)",position:"relative",overflow:"hidden"}}>
+{/* BG photo — crowd energy */}
+<img src="/images/noir-crowd.jpg" alt="" style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",opacity:0.12,filter:"brightness(0.45) saturate(0.5)",pointerEvents:"none"}}/>
+<div style={{maxWidth:"1400px",margin:"0 auto",position:"relative",zIndex:1}}>
 <Reveal><div style={{fontFamily:F.mono,fontSize:"9px",letterSpacing:"0.5em",textTransform:"uppercase",color:C.sand,marginBottom:"16px"}}>The Experience</div>
 <h2 style={{fontFamily:F.serif,fontSize:"clamp(36px,5.5vw,76px)",fontWeight:400,fontStyle:"italic",color:C.cream,lineHeight:0.95,marginBottom:"64px"}}>More than a party.<br/><em style={{color:C.sand}}>An atmosphere.</em></h2></Reveal>
 <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"2px",background:C.border}}>
@@ -72,6 +75,7 @@ return(<section id="experience" style={{background:C.base,padding:"120px clamp(3
 
 function Tickets(){const[sel,setSel]=useState(0);return(
 <section id="tickets" style={{background:C.surface,padding:"100px clamp(32px,5vw,80px)",position:"relative",overflow:"hidden"}}>
+<img src="/images/noir-dj.jpg" alt="" style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",opacity:0.1,filter:"brightness(0.4) saturate(0.5)",pointerEvents:"none"}}/>
 <div style={{position:"absolute",inset:0,background:`radial-gradient(ellipse at 50% 50%, ${C.plumGlow} 0%, transparent 55%)`}}/>
 <Grain/>
 <div style={{maxWidth:"1100px",margin:"0 auto",position:"relative",zIndex:1}}>
@@ -109,8 +113,9 @@ function Tickets(){const[sel,setSel]=useState(0);return(
 
 function FAQ(){const[open,setOpen]=useState<number|null>(null);
 const faqs=[{q:"What is the dress code?",a:"Dark elegance. Think fashion-forward black, jewel tones, and statement pieces. No athletic wear, sneakers, or overly casual attire."},{q:"What time do doors open?",a:"Doors open at 10PM. Last entry at 1AM. The experience runs until 3AM."},{q:"Is there a VIP option?",a:"Yes — private table reservations with bottle service available. Email for pricing and availability."},{q:"Age requirement?",a:"21+ with valid government-issued ID. No exceptions."},{q:"Where is NOIR held?",a:"Atlanta, GA. Venue announced 48 hours before each event. Confirmed guests receive location via email."},{q:"Can I get a refund?",a:"Tickets are non-refundable but transferable. Eventbrite refund policy applies for event cancellations."}];
-return(<section style={{background:C.base,padding:"100px clamp(32px,5vw,80px)"}}>
-<div style={{maxWidth:"780px",margin:"0 auto"}}>
+return(<section style={{background:C.base,padding:"100px clamp(32px,5vw,80px)",position:"relative",overflow:"hidden"}}>
+<img src="/images/noir-fashion.jpg" alt="" style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",opacity:0.08,filter:"brightness(0.4) saturate(0.4)",pointerEvents:"none"}}/>
+<div style={{maxWidth:"780px",margin:"0 auto",position:"relative",zIndex:1}}>
 <Reveal><div style={{fontFamily:F.serif,fontSize:"clamp(36px,5vw,64px)",fontWeight:400,fontStyle:"italic",color:C.cream,marginBottom:"48px"}}>FAQ</div></Reveal>
 {faqs.map((f,i)=><div key={f.q} style={{borderBottom:`1px solid ${C.border}`}}>
 <button onClick={()=>setOpen(open===i?null:i)} style={{width:"100%",background:"none",border:"none",padding:"22px 0",display:"flex",justifyContent:"space-between",alignItems:"center",cursor:"pointer",gap:"16px"}}>
