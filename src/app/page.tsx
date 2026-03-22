@@ -26,7 +26,7 @@ const Grain=()=><div style={{position:"absolute",inset:0,opacity:0.035,pointerEv
 function Nav(){const[sc,setSc]=useState(false);useEffect(()=>{const h=()=>setSc(window.scrollY>60);window.addEventListener("scroll",h,{passive:true});return()=>window.removeEventListener("scroll",h)},[]);return(
 <nav style={{position:"fixed",top:0,left:0,right:0,zIndex:200,padding:sc?"12px clamp(24px,4vw,60px)":"24px clamp(24px,4vw,60px)",display:"flex",justifyContent:"space-between",alignItems:"center",background:sc?`${C.base}F5`:"transparent",backdropFilter:sc?"blur(20px)":"none",borderBottom:sc?`1px solid ${C.border}`:"none",transition:"all 0.5s cubic-bezier(0.16,1,0.3,1)"}}>
 <div><div style={{fontFamily:F.mono,fontSize:"8px",letterSpacing:"0.5em",textTransform:"uppercase",color:C.sand,marginBottom:"2px"}}>A KHG Experience</div><span style={{fontFamily:F.serif,fontSize:"22px",fontWeight:400,fontStyle:"italic",color:C.cream,letterSpacing:"0.04em"}}>NOIR</span></div>
-<div style={{display:"flex",gap:"clamp(16px,2vw,32px)",alignItems:"center"}}>
+<div className="nl" style={{display:"flex",gap:"clamp(16px,2vw,32px)",alignItems:"center"}}>
 {["Experience","Gallery"].map(n=><a key={n} href={`#${n.toLowerCase()}`} style={{fontFamily:F.sans,fontSize:"10px",fontWeight:500,letterSpacing:"0.2em",textTransform:"uppercase",color:C.muted,textDecoration:"none",transition:"color 0.3s"}} onMouseEnter={e=>(e.target as HTMLAnchorElement).style.color=C.cream} onMouseLeave={e=>(e.target as HTMLAnchorElement).style.color=C.muted}>{n}</a>)}
 <a href="#tickets" style={{fontFamily:F.sans,fontSize:"10px",fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",color:C.base,background:C.sand,padding:"10px 24px",textDecoration:"none",display:"inline-block"}}>Get Tickets</a>
 </div></nav>);}
@@ -63,7 +63,7 @@ return(<section id="experience" style={{background:C.base,padding:"120px clamp(3
 <div style={{maxWidth:"1400px",margin:"0 auto",position:"relative",zIndex:1}}>
 <Reveal><div style={{fontFamily:F.mono,fontSize:"9px",letterSpacing:"0.5em",textTransform:"uppercase",color:C.sand,marginBottom:"16px"}}>The Experience</div>
 <h2 style={{fontFamily:F.serif,fontSize:"clamp(36px,5.5vw,76px)",fontWeight:400,fontStyle:"italic",color:C.cream,lineHeight:0.95,marginBottom:"64px"}}>More than a party.<br/><em style={{color:C.sand}}>An atmosphere.</em></h2></Reveal>
-<div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"2px",background:C.border}}>
+<div className="dg" style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"2px",background:C.border}}>
 {pillars.map((p,i)=><Reveal key={p.t} d={i*0.08}>
 <div style={{background:C.surface,padding:"48px 40px",position:"relative",overflow:"hidden"}}>
   <div style={{position:"absolute",top:0,left:0,width:"2px",height:"100%",background:`linear-gradient(180deg,${C.sand},transparent)`}}/>
@@ -108,7 +108,17 @@ function Tickets(){const[sel,setSel]=useState(0);return(
 <div style={{marginTop:"28px",display:"flex",gap:"32px",justifyContent:"center",flexWrap:"wrap"}}>
 {["Powered by Eventbrite","Secure Checkout","21+ Event","Dress Code Enforced"].map(s=><div key={s} style={{fontFamily:F.mono,fontSize:"9px",color:"rgba(255,255,255,0.18)",letterSpacing:"0.2em"}}>{s}</div>)}
 </div></div>
-<style>{`@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}`}</style>
+<style>{`@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}`}
+@media(max-width:768px){
+  .dg,.DG,[style*="gridTemplateColumns"]{grid-template-columns:1fr!important}
+  .nl,.desktop-nav{display:none!important}
+  .fg,.stat-grid,.feature-grid{grid-template-columns:1fr!important}
+  .eg{grid-template-columns:1fr!important}
+  h1,h2,.hero-title{word-break:break-word}
+  nav{padding:16px!important}
+  section{padding-left:16px!important;padding-right:16px!important}
+}
+</style>
 </section>);}
 
 function FAQ(){const[open,setOpen]=useState<number|null>(null);
@@ -143,4 +153,4 @@ function Footer(){return(<footer style={{background:"#070609",borderTop:`1px sol
 <div style={{fontFamily:F.mono,fontSize:"10px",color:"rgba(255,255,255,0.18)"}}>Privacy · Terms</div>
 </div></footer>);}
 
-export default function NOIRSite(){return(<div style={{background:C.base}}><Nav/><Hero/><Experience/><Tickets/><FAQ/><Footer/></div>);}
+export default function NOIRSite(){return(<div style={{background:C.base,overflowX:'hidden'}}><Nav/><Hero/><Experience/><Tickets/><FAQ/><Footer/></div>);}
