@@ -14,9 +14,9 @@ const C = {
 const F = { serif: "'Cormorant Garamond','Playfair Display',Georgia,serif", sans: "'DM Sans',system-ui,sans-serif", mono: "'DM Mono',monospace" };
 
 const TICKETS = [
-  { date: "May 17, 2026",  url: "https://www.eventbrite.com/e/espresso-tickets-1982507090074" },
-  { date: "Jul 19, 2026",  url: "https://www.eventbrite.com/e/espresso-tickets-1982510403986" },
-  { date: "Sep 6, 2026",   url: "https://www.eventbrite.com/e/espresso-tickets-1982511951615" },
+  { date: "May 17, 2026",  url: "https://huglife.vercel.app/tickets" },
+  { date: "Jul 19, 2026",  url: "https://huglife.vercel.app/tickets" },
+  { date: "Sep 6, 2026",   url: "https://huglife.vercel.app/tickets" },
 ];
 
 function useInView(t=0.1){const ref=useRef<HTMLDivElement>(null);const[v,setV]=useState(false);useEffect(()=>{const el=ref.current;if(!el)return;const o=new IntersectionObserver(([e])=>{if(e.isIntersecting)setV(true)},{threshold:t});o.observe(el);return()=>o.disconnect()},[t]);return[ref,v] as const}
