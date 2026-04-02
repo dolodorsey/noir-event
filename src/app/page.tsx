@@ -19,7 +19,7 @@ const TICKETS = [
   { date: "Sep 6, 2026",   url: "https://huglife.vercel.app/tickets" },
 ];
 
-function useInView(t=0.1){const ref=useRef<HTMLDivElement>(null
+function useInView(t=0.1){const ref=useRef(null
 
       {/* VENUE */}
       <div style={{padding:"48px 24px", textAlign:"center", borderTop:"1px solid rgba(255,255,255,0.07)"}}>
