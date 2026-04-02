@@ -123,7 +123,7 @@ function Tickets(){const[sel,setSel]=useState(0);return(
 </style>
 </section>);}
 
-function FAQ(){const[open,setOpen]=useState<number|null>(null);
+function FAQ(){const[open,setOpen]=useState(null);
 const faqs=[{q:"What is the dress code?",a:"Dark elegance. Think fashion-forward black, jewel tones, and statement pieces. No athletic wear, sneakers, or overly casual attire."},{q:"What time do doors open?",a:"Doors open at 10PM. Last entry at 1AM. The experience runs until 3AM."},{q:"Is there a VIP option?",a:"Yes — private table reservations with bottle service available. Email for pricing and availability."},{q:"Age requirement?",a:"21+ with valid government-issued ID. No exceptions."},{q:"Where is NOIR held?",a:"Atlanta, GA. Venue announced 48 hours before each event. Confirmed guests receive location via email."},{q:"Can I get a refund?",a:"Tickets are non-refundable but transferable. Eventbrite refund policy applies for event cancellations."}];
 return(<section style={{background:C.base,padding:"100px clamp(32px,5vw,80px)",position:"relative",overflow:"hidden"}}>
 <img src="/images/noir-fashion.jpg" alt="" style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",opacity:0.08,filter:"brightness(0.4) saturate(0.4)",pointerEvents:"none"}}/>
