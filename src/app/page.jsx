@@ -38,7 +38,7 @@ function Nav(){const[sc,setSc]=useState(false);useEffect(()=>{const h=()=>setSc(
 
 <div><div style={{fontFamily:F.mono,fontSize:"8px",letterSpacing:"0.5em",textTransform:"uppercase",color:C.sand,marginBottom:"2px"}}>A KHG Experience</div><span style={{fontFamily:F.serif,fontSize:"22px",fontWeight:400,fontStyle:"italic",color:C.cream,letterSpacing:"0.04em"}}>NOIR</span></div>
 <div className="nl" style={{display:"flex",gap:"clamp(16px,2vw,32px)",alignItems:"center"}}>
-{["Experience","Gallery"].map(n=><a key={n} href={`#${n.toLowerCase()}`} style={{fontFamily:F.sans,fontSize:"10px",fontWeight:500,letterSpacing:"0.2em",textTransform:"uppercase",color:C.muted,textDecoration:"none",transition:"color 0.3s"}} onMouseEnter={e=>(e.target as HTMLAnchorElement).style.color=C.cream} onMouseLeave={e=>(e.target as HTMLAnchorElement).style.color=C.muted}>{n}</a>)}
+{["Experience","Gallery"].map(n=><a key={n} href={`#${n.toLowerCase()}`} style={{fontFamily:F.sans,fontSize:"10px",fontWeight:500,letterSpacing:"0.2em",textTransform:"uppercase",color:C.muted,textDecoration:"none",transition:"color 0.3s"}} onMouseEnter={e=>(e.target).style.color=C.cream} onMouseLeave={e=>(e.target).style.color=C.muted}>{n}</a>)}
 <a href="#tickets" style={{fontFamily:F.sans,fontSize:"10px",fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",color:C.base,background:C.sand,padding:"10px 24px",textDecoration:"none",display:"inline-block"}}>Get Tickets</a>
 </div></nav>);}
 
