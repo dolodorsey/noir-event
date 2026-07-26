@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import NoirDirectForms from "./NoirDirectForms";
+
 export const metadata: Metadata = { title: "NOIR | Luxury Nightlife · Atlanta", description: "A KHG HugLife Event. Atlanta." };
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -9,7 +12,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,300;1,400&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
       </head>
-      <body style={{ margin: 0, padding: 0 }}>{children}</body>
+      <body style={{ margin: 0, padding: 0 }}>
+        {children}
+        <NoirDirectForms />
+      </body>
     </html>
   );
 }
